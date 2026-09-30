@@ -4,6 +4,11 @@ import { API_SCHEMA } from "@/data/api-schema";
 import { EndpointPanel } from "@/components/api-explorer/EndpointPanel";
 
 export default function InteractiveExplorerPage() {
+  const totalEndpoints = API_SCHEMA.reduce(
+    (acc, category) => acc + category.endpoints.length,
+    0,
+  );
+
   return (
     <article className="max-w-4xl mx-auto">
       {/* Page header */}
@@ -14,20 +19,25 @@ export default function InteractiveExplorerPage() {
           >
             Interactive API Explorer
           </h1>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200">
-            Coming Soon
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface-secondary text-content-secondary border border-border-subtle">
+            {totalEndpoints} endpoints{totalEndpoints === 1 ? "" : "s"}
           </span>
         </div>
         <p className="mt-3 text-base text-content-secondary">
-          Browse endpoints, fill in parameters, and see mock request/response
-          payloads — all without leaving the docs.
+          Browse every operation from the generated OpenAPI 3.0 spec, inspect parameters,
+          request and response schemas, and security scopes — all without leaving the
+          docs.
         </p>
-        <div className="mt-4 p-4 rounded-xl border border-amber-200 bg-amber-50">
-          <p className="text-sm text-amber-800">
-            <strong>Preview Mode:</strong> This interactive explorer is currently under development.
-            The endpoints shown below are for reference only. Full interactivity with live API testing
-            is coming in a future release.
-          </p>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <a
+            href="/openapi.json"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-surface-secondary text-content-primary border border-border-subtle hover:bg-surface-tertiary transition-colors"
+          >
+            Download openapi.json
+          </a>
+          <span className="text-xs text-content-secondary">
+            Source of truth: <code>docs/public/openapi.json</code>
+          </span>
         </div>
       </header>
 
