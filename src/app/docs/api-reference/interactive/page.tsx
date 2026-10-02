@@ -2,6 +2,8 @@
 
 import { API_SCHEMA } from "@/data/api-schema";
 import { EndpointPanel } from "@/components/api-explorer/EndpointPanel";
+import { Badge } from "@/components/docs/Badge";
+import { Callout } from "@/components/docs/Callout";
 
 export default function InteractiveExplorerPage() {
   const totalEndpoints = API_SCHEMA.reduce(
@@ -19,7 +21,7 @@ export default function InteractiveExplorerPage() {
           >
             Interactive API Explorer
           </h1>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface-secondary text-content-secondary border border-border-subtle">
+<span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface-secondary text-content-secondary border border-border-subtle">
             {totalEndpoints} endpoints{totalEndpoints === 1 ? "" : "s"}
           </span>
         </div>
@@ -28,6 +30,11 @@ export default function InteractiveExplorerPage() {
           request and response schemas, and security scopes — all without leaving the
           docs.
         </p>
+<Callout type="warning">
+          <strong>Preview Mode:</strong> This interactive explorer is currently under development.
+          The endpoints shown below are for reference only. Full interactivity with live API testing
+          is coming in a future release.
+        </Callout>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <a
             href="/openapi.json"
