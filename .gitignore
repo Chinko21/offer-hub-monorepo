@@ -13,8 +13,6 @@ dist/
 coverage/
 
 # Environment
-.env
-.env.local
 .env.*.local
 
 # Debug
@@ -30,7 +28,6 @@ temp_css.txt
 next-env.d.ts
 
 # IDE
-.vscode/
 .idea/
 
 # Backend
@@ -51,3 +48,4 @@ src/data/docs-index.json
 /test-results/
 /blob-report/
 /playwright/.cache/
+config.bat
